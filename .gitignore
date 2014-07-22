@@ -8,4 +8,7 @@ node_modules
 *.DS_Store*
 
 # Ignore compiled CSS
-*styles.min.css*
+*styles.css*
+
+# Ignore compiled JS
+*scripts.min.js*
