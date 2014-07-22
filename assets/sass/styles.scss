@@ -19,6 +19,13 @@ body {
 	background: url('../img/stardust.png');
 	font-family: 'Roboto', Arial, sans-serif;
 	font-weight: 300;
+
+	@media 
+	(-webkit-min-device-pixel-ratio: 2), 
+	(min-resolution: 192dpi) { 
+	    background: url('../img/stardust_2X.png');
+	}	
+	
 }
 
 .main {
