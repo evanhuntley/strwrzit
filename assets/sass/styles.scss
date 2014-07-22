@@ -1,0 +1,73 @@
+
+/* Fonts ---------------------------------------------------- */
+
+@import url(http://fonts.googleapis.com/css?family=Great+Vibes);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+
+/* General -------------------------------------------------- */
+
+body {
+	background: url('../img/stardust.png');
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight: 300;
+}
+
+.main {
+	margin: 0 auto;
+	padding: 0 1em;
+	text-align: center;
+	
+	@media only screen and (min-width: 960px) {
+		max-width: 960px;
+	}
+	
+	h1 {
+		margin: 1em 0 0;
+		font-size: 4em;
+		font-family: 'Great Vibes', Arial, sans-serif;
+		line-height: 1em;
+		color: #fff;
+		transition: all .2s;
+		
+		@media only screen and (min-width: 960px) {
+			font-size: 6em;
+		}		
+	}
+	
+	.subtitle {
+		margin: 0 0 2em;
+		color: #fff;
+	}
+	
+	button {
+		padding: 1em;
+		font-size: 1.2em;
+		border: none;
+		border-radius: 5px;
+		background: rgba(0, 0, 0, .3);
+		color: #ccc;
+		outline: none;
+		transition: all .2s;
+		
+		&:hover {
+			background: rgba(0, 0, 0, .6);
+		}
+	}
+	
+	article {
+		font-size: 1.5em;
+		color: #fff;
+		
+		a {
+			font-size: 1em;
+			color: rgba(0, 0, 0, .4);
+			text-decoration: none;
+			transition: all .2s;
+			
+			&:hover {
+				color: rgba(0, 0, 0, .7);
+			}
+		}
+	}
+}

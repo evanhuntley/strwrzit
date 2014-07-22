@@ -1,0 +1,11 @@
+#Ignore Node modules
+node_modules
+
+# Ignore sass-cache files.
+*.sass-cache*
+
+# Ignore goofy DS_Store stuff
+*.DS_Store*
+
+# Ignore compiled CSS
+*styles.min.css*

@@ -2,7 +2,7 @@
 	function getWiki() {
 
 		$.ajax({
-		    url: 'http://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts|info&inprop=url&exchars=500&format=json',
+		    url: 'http://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts|info&inprop=url&exchars=1000&format=json',
 		    data: {
 		        format: 'json'
 		    },
