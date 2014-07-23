@@ -14,19 +14,28 @@
 	</head>
 	<body>
 		
-		<section class="choice">
+		<section class="choice" id="choice">
 			<h1>WikiRandom</h1>
 			<p class="subtitle">Random snippets from Wikipedia, at your command!</p>
-			<button>Use your own text</button>
-			<button id="button">Random Wikipedia entry</button>
-			<article>
-				<p>Generating a random entry...</p>
-			</article>
-			<button id="play-button" disabled>Ok, Go!</button>
+			<button id="own-text">Use your own text</button>
+			<button id="wikipedia">Random Wikipedia entry</button>
+			<button id="play-button">Ok, Go!</button>
+			<div class="choice-contain">
+				<article>
+					<p>Generating a random entry...</p>
+				</article>
+				<textarea>
+				</textarea>
+			</div>
 		</section>
 		
-		<section class="scroll">
-			<div>This is some test text</div>
+		<section class="star-wars">
+			<div class="intro">A long time ago, in a galaxy far, far away...</div>
+			<div class="scroll" id="scroll">
+				<div>
+					This is some test text
+				</div>
+			</div>
 		</section>
 	
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

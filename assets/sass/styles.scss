@@ -19,6 +19,8 @@ body {
 	background: url('../img/stars.jpg');
 	font-family: 'News Cycle', Arial, sans-serif;
 	font-weight: 400;
+	overflow: auto;
+	overflow-x: hidden;
 
 	@media 
 	(-webkit-min-device-pixel-ratio: 2), 
@@ -76,16 +78,18 @@ section {
 		}
 	}
 	
+	.choice-contain {
+		position: relative;
+	}
+	
 	article {
+		position: absolute;
+		top: 0;
 		margin: 0 0 3em;
 		font-size: 1.2em;
 		color: #fff;
 		opacity: 0;
 		transition: all .2s;
-		
-		&.on {
-			opacity: 1;
-		}
 		
 		@media only screen and (min-width: 768px) {
 			font-size: 1.5em;
@@ -102,24 +106,60 @@ section {
 			}
 		}
 	}
+	
+	textarea {
+		min-height: 300px;
+		position: absolute;
+		width: 60%;
+		top: 0;
+		left: 50%;
+		margin-left: -30%;
+		text-align: left;
+		opacity: 0;
+	}
 }
 
 /* Scroll Text ------------------------------------------------------------ */
 
-.scroll {
-	position: absolute;
-	width: 16em;
-	margin-left: -8em;
-	padding: 0;
-	left: 50%;
-	top: 100%;
-	color: yellow;
-	font-size: 3em;
-	font-weight: 700;
-	transform-origin: 50% 100%;
-	transform: perspective(300px) rotateX(25deg);
-	animation: titles 81s;
-	backface-visibility: hidden;
+.star-wars {
+
+	.intro {
+		display: none;
+		position: relative;
+		top: 100px;
+		color: rgb(75, 213, 238);
+		font-size: 3em;
+	}
+
+	.scroll {
+		position: absolute;
+		width: 100%;
+		height: 50em;
+		top: auto;
+		left: 50%;
+		bottom: 0;
+		margin-left: -50%;
+		font-size: 350%;
+		text-align: justify;
+		color: yellow;
+		overflow: hidden;
+		transform-origin: 50% 100%;
+		transform: perspective(300px) rotateX(25deg);
+		backface-visibility: hidden;
+		
+		div.go {
+			display: none;
+			
+			&.go {
+				display: block;
+				position: absolute;
+				top: 100%;
+				animation: titles 81s;				
+			}
+		}
+	}
+	
+	
 }
 
 @keyframes titles {
