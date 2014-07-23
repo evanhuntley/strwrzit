@@ -10,15 +10,15 @@
 /* Fonts ---------------------------------------------------- */
 
 @import url(http://fonts.googleapis.com/css?family=Great+Vibes);
-@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700);
 
 
 /* General -------------------------------------------------- */
 
 body {
-	background: url('../img/stardust.png');
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: 300;
+	background: url('../img/stars.jpg');
+	font-family: 'News Cycle', Arial, sans-serif;
+	font-weight: 400;
 
 	@media 
 	(-webkit-min-device-pixel-ratio: 2), 
@@ -28,7 +28,7 @@ body {
 	
 }
 
-.main {
+section {
 	margin: 0 auto;
 	padding: 0 1em;
 	text-align: center;
@@ -36,6 +36,11 @@ body {
 	@media only screen and (min-width: 960px) {
 		max-width: 960px;
 	}
+}
+
+/* User Choice State --------------------------------------------------- */
+
+.choice {
 	
 	h1 {
 		margin: 1em 0 0;
@@ -97,4 +102,36 @@ body {
 			}
 		}
 	}
+}
+
+/* Scroll Text ------------------------------------------------------------ */
+
+.scroll {
+	position: absolute;
+	width: 16em;
+	margin-left: -8em;
+	padding: 0;
+	left: 50%;
+	top: 100%;
+	color: yellow;
+	font-size: 3em;
+	font-weight: 700;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+	animation: titles 81s;
+	backface-visibility: hidden;
+}
+
+@keyframes titles {
+	0% { 
+    top: 100%; 
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+	100% { 
+    top: 20%; 
+    opacity: 0;
+  }
 }
