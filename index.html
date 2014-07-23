@@ -13,19 +13,23 @@
 		
 	</head>
 	<body>
-		
+		<audio preload="auto" id="audio">
+		    <source src="assets/audio/starwars.ogg" type="audio/ogg" />
+		    <source src="assets/audio/starwars.mp3" type="audio/mpeg" />
+		</audio>		
 		<section class="choice" id="choice">
-			<h1>WikiRandom</h1>
-			<p class="subtitle">Random snippets from Wikipedia, at your command!</p>
+			<h1>STRWRZIT</h1>
+			<p class="subtitle">Turn anything into a Star Wars text crawl.</p>
 			<button id="own-text">Use your own text</button>
 			<button id="wikipedia">Random Wikipedia entry</button>
-			<button id="play-button">Ok, Go!</button>
+			<div class="play" id="play">
+				<button class="play-button" id="play-button">Go!</button>
+			</div>
 			<div class="choice-contain">
 				<article>
 					<p>Generating a random entry...</p>
 				</article>
-				<textarea>
-				</textarea>
+				<textarea></textarea>
 			</div>
 		</section>
 		

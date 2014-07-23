@@ -7,9 +7,65 @@
 @import "normalize";
 
 
+/* Variables ------------------------------------------------ */
+
+$yellow: #ebd800;
+
+/* Mixins --------------------------------------------------- */
+
+/* Define Media Queries - http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+// Use: @include bp-s {};
+
+@mixin bp-s {
+    @media only screen and (min-width: 30em) { @content; } // 480px
+    }
+
+@mixin bp-m {
+    @media only screen and (min-width: 37.5em) { @content; } // 600px
+    }
+
+@mixin bp-l {
+    @media only screen and (min-width: 47.9375em) { @content; } // 767px
+    }
+
+@mixin bp-xl {
+    @media only screen and (min-width: 59.375em) { @content; } // 959px
+    }
+
+@mixin bp-xxl {
+    @media only screen and (min-width: 78.75em) { @content; } // 1260px
+    }
+
+
+/* REM Font sizing - http://blog.divshot.com/post/29552945105/useful-sass-mixins-for-responsive-design-font-sizing */ // Use: @include font-size(1,1.5); 
+
+@mixin font-size($size: 1, $line: $size * 1.5) { 
+	font-size : ($size * 16) + px; 
+	line-height : ($line * 16) + px; 
+	font-size : $size + rem; 
+	line-height : $line + rem; 
+}
+
+/* Clearfix http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+// Use: @extend %clearfix;
+%clearfix {
+    *zoom: 1;
+
+    &:before {
+        content: " ";
+        display: table;
+        }
+
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+        }
+    }
+
 /* Fonts ---------------------------------------------------- */
 
-@import url(http://fonts.googleapis.com/css?family=Great+Vibes);
+@import url(http://fonts.googleapis.com/css?family=Changa+One:400italic);
 @import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700);
 
 
@@ -19,8 +75,7 @@ body {
 	background: url('../img/stars.jpg');
 	font-family: 'News Cycle', Arial, sans-serif;
 	font-weight: 400;
-	overflow: auto;
-	overflow-x: hidden;
+	@include font-size(1, 1.2);
 
 	@media 
 	(-webkit-min-device-pixel-ratio: 2), 
@@ -46,35 +101,55 @@ section {
 	
 	h1 {
 		margin: 1em 0 0;
-		font-size: 3.25em;
-		font-family: 'Great Vibes', Arial, sans-serif;
+		@include font-size(4);
+		font-family: 'Changa One', Arial, sans-serif;
 		font-weight: 400;
+		font-style: italic;
+		text-transform: uppercase;
 		line-height: 1em;
-		color: #fff;
+		color: $yellow;
+		-webkit-text-fill-color: #000;
+		-webkit-text-stroke: 2px #ff6;
 		transition: all .2s;
 		
 		@media only screen and (min-width: 768px) {
-			font-size: 6em;
+			@include font-size(8);
 		}		
 	}
 	
 	.subtitle {
 		margin: 0 0 2em;
+		font-size: 1.5em;
+		font-family: 'Changa One';
+		font-style: italic;
 		color: #fff;
 	}
 	
 	button {
-		padding: 1em;
-		font-size: 1.2em;
+		padding: 6px 16px;
+		@include font-size(1.2);
+		font-weight: 400;
 		border: none;
 		border-radius: 5px;
-		background: rgba(0, 0, 0, .3);
-		color: #ccc;
+		background: rgba(255, 255, 255, .2);
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, .8);
 		outline: none;
 		transition: all .2s;
 		
-		&:hover {
-			background: rgba(0, 0, 0, .6);
+		&:hover, &.on {
+			background: rgba(255, 255, 255, .7);
+			color: #000;
+		}
+	}
+	
+	.play {
+		display: none;
+		margin: 2em 0 0;
+		
+		button {
+			padding: 5px 20px 9px 20px;
+			@include font-size(2);
 		}
 	}
 	
@@ -85,8 +160,9 @@ section {
 	article {
 		position: absolute;
 		top: 0;
+		width: 100%;
 		margin: 0 0 3em;
-		font-size: 1.2em;
+		@include font-size(1.2);
 		color: #fff;
 		opacity: 0;
 		transition: all .2s;
@@ -97,25 +173,36 @@ section {
 		
 		a {
 			font-size: 1em;
-			color: rgba(198, 213, 179, 0.7);
+			color: rgba(75, 213, 238, 0.7);
 			text-decoration: none;
 			transition: all .2s;
 			
 			&:hover {
-				color: rgba(198, 213, 179, 1);
+				color: rgba(75, 213, 238, 1);
 			}
 		}
 	}
 	
 	textarea {
-		min-height: 300px;
+		min-height: 200px;
 		position: absolute;
 		width: 60%;
 		top: 0;
 		left: 50%;
 		margin-left: -30%;
+		margin-top: 1em;
+		padding: 1em;
 		text-align: left;
 		opacity: 0;
+		color: #fff;
+		border: none;
+		background: #000;
+		box-shadow: 0 0 6px 3px rgba(75, 213, 238, 0.5);
+	}
+	
+	.active {
+		opacity: 1;
+		z-index: 100;
 	}
 }
 
@@ -126,7 +213,7 @@ section {
 	.intro {
 		display: none;
 		position: relative;
-		top: 100px;
+		top: 300px;
 		color: rgb(75, 213, 238);
 		font-size: 3em;
 	}
@@ -140,14 +227,20 @@ section {
 		bottom: 0;
 		margin-left: -50%;
 		font-size: 350%;
+		line-height: normal;
 		text-align: justify;
-		color: yellow;
+		color: $yellow;
 		overflow: hidden;
 		transform-origin: 50% 100%;
 		transform: perspective(300px) rotateX(25deg);
 		backface-visibility: hidden;
 		
-		div.go {
+		a {
+			text-decoration: none;
+			color: rgba(75, 213, 238, 1);
+		}
+		
+		div {
 			display: none;
 			
 			&.go {
