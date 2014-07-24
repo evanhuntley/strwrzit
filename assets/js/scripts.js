@@ -85,7 +85,7 @@
 			// Hide Choices, Show Intro Text and Scroller
 			choice.hide();
 			reset.show();
-			intro.fadeIn(2000).delay(1000).fadeOut(1000);
+			intro.fadeIn(1000).delay(1000).fadeOut(1000);
 			scroller.addClass('go');
 			
 			// Play the song!
