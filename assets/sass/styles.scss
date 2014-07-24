@@ -90,7 +90,7 @@ section {
 }
 
 button:not(.play-button) {
-	margin: 0 0 5px;
+	margin: 0 0 10px;
 	padding: 6px 16px;
 	@include font-size(1.2);
 	font-weight: 400;
@@ -101,6 +101,10 @@ button:not(.play-button) {
 	color: rgba(255, 255, 255, .8);
 	outline: none;
 	transition: all .2s;
+	
+	@include bp-m {
+		margin: 0;
+	}
 	
 	&:hover, &.on {
 		background: rgba(255, 255, 255, .7);
@@ -125,14 +129,15 @@ button:not(.play-button) {
 		-webkit-text-stroke: 2px #ff6;
 		transition: all .2s;
 		
-		@media only screen and (min-width: 768px) {
+		@include bp-l {
 			@include font-size(8);
 		}		
 	}
 	
 	.subtitle {
 		margin: 0 0 2em;
-		@include font-size(1.5);
+		font-size: 1.5em;
+		line-height: 1em;
 		font-family: 'Changa One';
 		font-style: italic;
 		color: #fff;
@@ -140,7 +145,7 @@ button:not(.play-button) {
 	
 	.play-button {
 		display: block;
-		margin: 0 auto;
+		margin: 0 auto 2em;
 		background: transparent;
 		border: none;
 		color: $blue;
@@ -171,11 +176,15 @@ button:not(.play-button) {
 	}
 	
 	article {
-		margin: 2em 0 1em;
+		margin: 1em 0;
 		@include font-size(1.2);
 		color: #fff;
 		
-		@media only screen and (min-width: 768px) {
+		@include bp-m {
+			margin-top: 2em;
+		}
+		
+		@include bp-l {
 			font-size: 1.5em;
 		}
 		
@@ -193,23 +202,32 @@ button:not(.play-button) {
 	
 	.user-text {
 		position: absolute;
-		width: 60%;
+		width: 80%;
 		top: 0;
 		left: 50%;
-		margin-left: -30%;
+		margin-left: -40%;
 		margin-top: 1em;	
 		opacity: 0;
+		
+		@include bp-m {
+			width: 60%;
+			margin-left: -30%;
+		}
 	
 		textarea {
 			min-height: 180px;
 			width: 100%;
-			margin: 2em 0 1em;
+			margin: 1em 0;
 			padding: 1em;
 			text-align: left;
 			color: #fff;
 			border: 1px solid $blue;
 			background: #000;
 			box-shadow: 0 0 6px 3px rgba(75, 213, 238, 0.5);
+			
+			@include bp-m {
+				margin-top: 2em;
+			}
 		}
 	}
 	
@@ -226,11 +244,12 @@ button:not(.play-button) {
 	.intro {
 		display: none;
 		position: relative;
-		top: 300px;
+		top: 150px;
 		color: rgb(75, 213, 238);
 		@include font-size(2);
 		
 		@include bp-m {
+			top: 300px;
 			@include font-size(3);
 		}
 	}
