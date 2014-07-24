@@ -21,15 +21,22 @@
 			<h1>STRWRZIT</h1>
 			<p class="subtitle">Turn anything into a Star Wars text crawl.</p>
 			<button id="own-text">Use your own text</button>
-			<button id="wikipedia">Random Wikipedia entry</button>
+			<button id="wiki-article">Random Wikipedia entry</button>
 			<div class="play" id="play">
 				<button class="play-button" id="play-button">Go!</button>
 			</div>
 			<div class="choice-contain">
-				<article>
-					<p>Generating a random entry...</p>
-				</article>
-				<textarea></textarea>
+				<div class="wikipedia">
+					<article>
+						<p>Generating a random entry...</p>					
+					</article>
+					<button class="new-wiki" id="new-wiki">Get a different article</button>
+					<button class="play-button">Go!</button>
+				</div>
+				<div class="user-text">
+					<textarea></textarea>
+					<button class="play-button">Go!</button>
+				</div>
 			</div>
 		</section>
 		
@@ -37,7 +44,6 @@
 			<div class="intro">A long time ago, in a galaxy far, far away...</div>
 			<div class="scroll" id="scroll">
 				<div>
-					This is some test text
 				</div>
 			</div>
 		</section>

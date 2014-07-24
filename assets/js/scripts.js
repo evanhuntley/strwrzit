@@ -3,11 +3,11 @@
 ============================================================================= */	
 
 	// Declare general variables
+	var articleWrap = $('.wikipedia');
 	var article = $('article');
-	var textInput = $('textarea');
+	var textInput = $('.user-text');
 	var scroller = $('#scroll div');
 	var buttons = $('#choice button');
-	var play = $('#play');
 	var song = $('#audio');
 
 	// Make the AJAX call, display new content
@@ -37,36 +37,25 @@
 		// Call Wikipedia function on refresh	
 		getWiki();
 		
-		// Declare variable for # of Wikipedia clicks
-		var clicks = 0;
-		
 		// Call Wikipedia function on click, show article
-		$('#wikipedia').click(function() {
+		$('#wiki-article').click(function() {
 		
 			textInput.removeClass('active');
-			
-			// Just show article if first click, otherwise make ajax call
-			if (clicks == 0) {
-				$('#wikipedia').html('Get a different article');
-			} else {
-				getWiki();
-			}
-			clicks++;
-			
-			article.addClass('active');
+			articleWrap.addClass('active');
 							
 			// Handle button status
 			buttons.removeClass('on');
 			$(this).addClass('on');
 			
-			// Show Play button
-			play.show();
-			
+		});
+		
+		$('#new-wiki').click(function() {
+			getWiki();
 		});
 		
 		// Show textarea on click
 		$('#own-text').click(function() {
-			article.removeClass('active');
+			articleWrap.removeClass('active');
 			$('#wikipedia').html('Random Wikipedia entry');
 			textInput.addClass('active');
 			
@@ -76,9 +65,6 @@
 			// Handle button status
 			buttons.removeClass('on');
 			$(this).addClass('on');
-			
-			// Show Play button
-			play.show();
 			
 		});
 		
@@ -98,12 +84,11 @@
 			$('#choice').hide();
 			
 			// Show Intro Text
-			$('.intro').fadeIn(1000).delay(3000).fadeOut(1000);
+			$('.intro').fadeIn(2000).delay(4000).fadeOut(1000);
 			
 			// Show Scroller
 			scroller.addClass('go');
 			
-			song[0].currentTime = 4;
 			song[0].play();
 			
 		});
