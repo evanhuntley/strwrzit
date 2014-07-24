@@ -9,6 +9,9 @@
 	var scroller = $('#scroll div');
 	var buttons = $('#choice button');
 	var song = $('#audio');
+	var reset = $('#reset');
+	var choice = $('#choice');
+	var intro = $('.intro');
 
 	// Make the AJAX call, display new content
 	function getWiki() {
@@ -49,18 +52,16 @@
 			
 		});
 		
+		// Get Different Wikipedia Article on button click
 		$('#new-wiki').click(function() {
 			getWiki();
 		});
 		
 		// Show textarea on click
 		$('#own-text').click(function() {
+		
 			articleWrap.removeClass('active');
-			$('#wikipedia').html('Random Wikipedia entry');
 			textInput.addClass('active');
-			
-			// Prevent need for additional AJAX call if user toggles between options
-			clicks = 0;
 			
 			// Handle button status
 			buttons.removeClass('on');
@@ -68,10 +69,11 @@
 			
 		});
 		
-		$('#play-button').click(function() {
+		// Do the Star Wars Thing
+		$('.play-button').click(function() {
 			
 			// Check which button is on
-			if ( $('#wikipedia').hasClass('on') ) {
+			if ( $('#wiki-article').hasClass('on') ) {
 				var content = article.html();				
 			} else {
 				var content = '<p>' + textInput.val() + '</p>';
@@ -80,16 +82,33 @@
 			// Put correct content in scroller
 			scroller.html(content);
 			
-			// Hide Choices
-			$('#choice').hide();
-			
-			// Show Intro Text
-			$('.intro').fadeIn(2000).delay(4000).fadeOut(1000);
-			
-			// Show Scroller
+			// Hide Choices, Show Intro Text and Scroller
+			choice.hide();
+			reset.show();
+			intro.fadeIn(2000).delay(1000).fadeOut(1000);
 			scroller.addClass('go');
 			
-			song[0].play();
+			// Play the song!
+			song.trigger('play');
+			
+		});
+		
+		// Reset the whole thing
+		$('#reset').click(function() {
+			
+			// Stop and reset music
+			song.trigger('pause');
+			song.prop("currentTime", 0);
+			
+			// Bring back the choice state
+			reset.hide();
+			intro.hide();
+			scroller.removeClass('go');
+			articleWrap.removeClass('active');
+			textInput.removeClass('active');
+			buttons.removeClass('on');
+			getWiki();
+			choice.fadeIn();
 			
 		});
 		

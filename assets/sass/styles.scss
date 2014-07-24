@@ -10,6 +10,7 @@
 /* Variables ------------------------------------------------ */
 
 $yellow: #ebd800;
+$blue: #4bd5ee;
 
 /* Mixins --------------------------------------------------- */
 
@@ -88,6 +89,25 @@ section {
 	}
 }
 
+button:not(.play-button) {
+	margin: 0 0 5px;
+	padding: 6px 16px;
+	@include font-size(1.2);
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, .2);
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, .8);
+	outline: none;
+	transition: all .2s;
+	
+	&:hover, &.on {
+		background: rgba(255, 255, 255, .7);
+		color: #000;
+	}
+}
+
 /* User Choice State --------------------------------------------------- */
 
 .choice {
@@ -112,37 +132,23 @@ section {
 	
 	.subtitle {
 		margin: 0 0 2em;
-		font-size: 1.5em;
+		@include font-size(1.5);
 		font-family: 'Changa One';
 		font-style: italic;
 		color: #fff;
 	}
 	
-	button {
-		padding: 6px 16px;
-		@include font-size(1.2);
-		font-weight: 400;
+	.play-button {
+		display: block;
+		margin: 0 auto;
+		background: transparent;
 		border: none;
-		border-radius: 5px;
-		background: rgba(255, 255, 255, .2);
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, .8);
-		outline: none;
+		color: $blue;
+		@include font-size(3);
 		transition: all .2s;
 		
-		&:hover, &.on {
-			background: rgba(255, 255, 255, .7);
-			color: #000;
-		}
-	}
-	
-	.play {
-		display: none;
-		margin: 2em 0 0;
-		
-		button {
-			padding: 5px 20px 9px 20px;
-			@include font-size(2);
+		&:hover {
+			color: #fff;
 		}
 	}
 	
@@ -154,12 +160,18 @@ section {
 		position: absolute;
 		top: 0;
 		width: 100%;
+		margin: 0 0 3em;
 		opacity: 0;
 		transition: all .2s;
+		
+		.new-wiki {
+			margin: 1em 0;
+			@include font-size(1);
+		}
 	}
 	
 	article {
-		margin: 0 0 3em;
+		margin: 2em 0 1em;
 		@include font-size(1.2);
 		color: #fff;
 		
@@ -174,7 +186,7 @@ section {
 			transition: all .2s;
 			
 			&:hover {
-				color: rgba(75, 213, 238, 1);
+				color: $blue;
 			}
 		}
 	}
@@ -189,12 +201,13 @@ section {
 		opacity: 0;
 	
 		textarea {
-			min-height: 200px;
+			min-height: 180px;
 			width: 100%;
+			margin: 2em 0 1em;
 			padding: 1em;
 			text-align: left;
 			color: #fff;
-			border: 1px solid rgb(75, 213, 238);
+			border: 1px solid $blue;
 			background: #000;
 			box-shadow: 0 0 6px 3px rgba(75, 213, 238, 0.5);
 		}
@@ -215,7 +228,11 @@ section {
 		position: relative;
 		top: 300px;
 		color: rgb(75, 213, 238);
-		font-size: 3em;
+		@include font-size(2);
+		
+		@include bp-m {
+			@include font-size(3);
+		}
 	}
 
 	.scroll {
@@ -251,9 +268,16 @@ section {
 				display: block;
 				position: absolute;
 				top: 100%;
-				animation: titles 81s linear 6.5s;				
+				animation: titles 81s;				
 			}
 		}
+	}
+	
+	.reset {
+		display: none;
+		position: fixed;
+		top: 1em;
+		right: 1em;
 	}
 }
 
