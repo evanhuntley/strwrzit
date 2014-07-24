@@ -122,6 +122,8 @@ button:not(.play-button) {
 /* User Choice State --------------------------------------------------- */
 
 .choice {
+	position: relative;
+	z-index: 200;
 	
 	h1 {
 		margin: .5em 0 0;

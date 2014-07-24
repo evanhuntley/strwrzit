@@ -76,7 +76,7 @@
 			if ( $('#wiki-article').hasClass('on') ) {
 				var content = article.html();				
 			} else {
-				var content = '<p>' + textInput.val() + '</p>';
+				var content = '<p>' + textInput.find('textarea').val() + '</p>';
 			}
 			
 			// Put correct content in scroller
